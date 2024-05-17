@@ -1,0 +1,16 @@
+
+spring:
+  application:
+    name: orderService
+  config:
+    import: configserver:http://localhost:9296
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://abhi:3306/orderService
+    username: abhi
+    password: abhi
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  #spring.jpa.show-sql: true
+
