@@ -1,0 +1,27 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: paymentService
+  config:
+    import: configserver:http://localhost:9296
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://abhi:3306/paymentService
+    username: abhi
+    password: abhi
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  #spring.jpa.show-sql: true
+
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+
+
+
