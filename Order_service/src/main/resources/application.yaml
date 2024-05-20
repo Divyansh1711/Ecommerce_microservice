@@ -14,3 +14,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   #spring.jpa.show-sql: true
 
+management:
+  tracing:
+    sampling:
+      probability: 1.0
