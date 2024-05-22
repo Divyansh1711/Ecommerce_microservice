@@ -1,9 +1,25 @@
-
 spring:
   application:
     name: orderService
   config:
     import: configserver:http://localhost:9296
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-39851582.okta.com/oauth2/default
+      client:
+        registration:
+          internal-client:
+            provider: okta
+            authorization-grant-type: client_credentials
+            scope: internal
+            client-id: 0oah8ot5gaGwzM9pf5d7
+            client-secret: ZNLwCbb0Ly3OP21-jZI97IehMSsIvJ2_Vm3Nl28Q0HeGOgd485UHPNJuoUQ5X3v3
+        provider:
+          okta:
+            issuer-uri: https://dev-39851582.okta.com/oauth2/default
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -12,7 +28,8 @@ spring:
     username: abhi
     password: abhi
     driver-class-name: com.mysql.cj.jdbc.Driver
-  #spring.jpa.show-sql: true
+  # Uncomment the following line to enable SQL logging
+  # jpa.show-sql: true
 
 management:
   tracing:

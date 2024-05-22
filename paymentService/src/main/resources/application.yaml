@@ -14,14 +14,10 @@ spring:
     username: abhi
     password: abhi
     driver-class-name: com.mysql.cj.jdbc.Driver
-  #spring.jpa.show-sql: true
-
+  # Uncomment the following line to enable SQL logging
+  # jpa.show-sql: true
 
 management:
   tracing:
     sampling:
       probability: 1.0
-
-
-
-

@@ -13,20 +13,45 @@ spring:
           uri: lb://orderService
           predicates:
             - Path=/order/**
+          filters:
+            -name: CircuitBreaker
+            args:
+              name- orderService
+             fallback-forward:/orderServiceFallBack
+
 
         - id: productService
           uri: lb://productService
           predicates:
             - Path=/product/**
+          filters:
+            -name: CircuitBreaker
+            args:
+              name- productService
+              fallback-forward:/productServiceFallBack
 
         - id: paymentService
           uri: lb://paymentService
           predicates:
             - Path=/payment/**
+          filters:
+            -name: CircuitBreaker
+            args:
+              name- paymentService
+              fallback-forward:/paymentServiceFallBack
 
 
 management:
   tracing:
     sampling:
       probability: 1.0
+
+okta:
+  oauth2:
+    issuer: https://dev-39851582.okta.com/oauth2/default
+    audience: api://default
+    client-id: 0oah8ot5gaGwzM9pf5d7
+    client-secret: ZNLwCbb0Ly3OP21-jZI97IehMSsIvJ2_Vm3Nl28Q0HeGOgd485UHPNJuoUQ5X3v3
+    scopes: openid, profile, email, offline_access
+
 
